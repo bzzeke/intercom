@@ -4,6 +4,7 @@ import os
 import json
 import urllib2
 import time
+import util
 
 DELAY = 2
 MULTIPLIER = 2
