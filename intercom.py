@@ -35,6 +35,8 @@ class Intercom:
         self.core.video_display_enabled = False
         self.core.video_device = os.environ['VIDEO_DEVICE']
         self.core.capture_device = os.environ['SOUND_DEVICE']
+        self.core.ringback = '{}/call.wav'.format(os.environ['SOUNDS_PATH'])
+
         self.configure_account()
 
     def configure_account(self):
@@ -75,7 +77,6 @@ class Intercom:
         # params.early_media_sending_enabled = True
         address = linphone.Address.new(os.environ['PANEL_ADDRESS'])
 
-        self.play('call', True)
         self.core.invite_address_with_params(address, params)
 
     def play(self, type, is_sip=False):
@@ -116,7 +117,6 @@ class Intercom:
     def run(self):
 
         while not self.quit:
-
             if (not gpio_dev.read(gpio_dev.CALL_BUTTON_PIN)):
                 self.make_call = True
 

@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 
-DOOR_PIN = 5
-CALL_BUTTON_PIN  = 19
+DOOR_PIN = 13
+CALL_BUTTON_PIN  = 21
 
 def setup():
     GPIO.setmode(GPIO.BCM)
